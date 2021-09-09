@@ -3,19 +3,28 @@ import { CompleteTodo } from "../../../core/commands/todo/CompleteTodo";
 import { TodoEntity } from "../../../core/domain/entities/todo/TodoEntity";
 
 export class TodoViewModel {
-  public todo: TodoEntity;
+  public title: string;
+  public completed: boolean;
+
+  private _uid: string;
 
   private _completeTodoCommand: CompleteTodo = new CompleteTodo();
 
   constructor(todo: TodoEntity) {
-    this.todo = todo;
+    this.title = todo.title;
+    this.completed = todo.completed;
+
+    this._uid = todo._uid;
 
     makeAutoObservable(this);
   }
 
-  public async complete() {
+  public async complete(): Promise<void> {
     runInAction(async () => {
-      this.todo = await this._completeTodoCommand.handle(this.todo._uid);
+      // Todo: check if handler is succesfull.
+      await this._completeTodoCommand.handle(this._uid);
+
+      this.completed = true;
     });
   }
 }

@@ -17,7 +17,7 @@ export class TodoService {
     return todo;
   }
 
-  public async update(todo: TodoEntity) {
+  public async update(todo: TodoEntity): Promise<void> {
     const todoIndex = mockedTodos.findIndex((t) => t._uid === todo._uid);
 
     mockedTodos[todoIndex] = todo;

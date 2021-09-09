@@ -4,7 +4,7 @@ import { TodosQuery } from "../../../core/queries/TodosQuery";
 
 export class TodosViewModel {
   public todos: TodoViewModel[] = [];
-
+  
   private _todosQuery: TodosQuery = new TodosQuery();
 
   constructor() {
@@ -17,7 +17,7 @@ export class TodosViewModel {
     this.setTodos();
   }
 
-  private async setTodos() {
+  private async setTodos(): Promise<void> {
     const todos = await this._todosQuery.handle();
 
     runInAction(async () => {

@@ -7,7 +7,7 @@ export class CompleteTodo {
     this._todoRepository = new TodoRepository();
   }
 
-  public async handle(uid: string) {
+  public async handle(uid: string): Promise<void> {
     const todo = await this._todoRepository.getById(uid);
 
     if (!todo) throw Error("Todo not found.");
@@ -15,7 +15,5 @@ export class CompleteTodo {
     todo.complete();
 
     this._todoRepository.update(todo);
-
-    return todo;
   }
 }
