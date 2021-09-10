@@ -1,25 +1,18 @@
 import { TodoEntity } from "../../../core/domain/entities/todo/TodoEntity";
-
-const mockedTodos: TodoEntity[] = [
-  TodoEntity.existing("t-1", "a", false),
-  TodoEntity.existing("t-2", "b", false),
-  TodoEntity.existing("t-3", "c", false),
-];
+import { GetTodosEndpoint } from "../../api/endpoints/todos/GetTodosEndpoint";
+import { GetTodoByIdEndpoint } from "../../api/endpoints/todos/GetTodoByIdEndpoint";
 
 export class TodoService {
+  private _getTodosEndpoint = new GetTodosEndpoint();
+  private _getTodoByIdEndpoint = new GetTodoByIdEndpoint();
+
   public async getAll(): Promise<TodoEntity[]> {
-    return mockedTodos;
+    return await this._getTodosEndpoint.get();
   }
 
   public async getById(uid: string): Promise<TodoEntity | undefined> {
-    const todo = mockedTodos.find((t) => t._uid === uid);
-
-    return todo;
+    return await this._getTodoByIdEndpoint.getByUid(uid);
   }
 
-  public async update(todo: TodoEntity): Promise<void> {
-    const todoIndex = mockedTodos.findIndex((t) => t._uid === todo._uid);
-
-    mockedTodos[todoIndex] = todo;
-  }
+  public async update(todo: TodoEntity): Promise<void> {}
 }

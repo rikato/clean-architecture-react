@@ -1,0 +1,7 @@
+{
+  "todos": [
+    { "todo": { "uid": "1", "title": "First todo", "completed": false } },
+    { "todo": { "uid": "2", "title": "Second todo", "completed": false } },
+    { "todo": { "uid": "3", "title": "Third todo", "completed": false } }
+  ]
+}

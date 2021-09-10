@@ -4,7 +4,7 @@ import { TodosQuery } from "../../../core/queries/TodosQuery";
 
 export class TodosViewModel {
   public todos: TodoViewModel[] = [];
-  
+
   private _todosQuery: TodosQuery = new TodosQuery();
 
   constructor() {
