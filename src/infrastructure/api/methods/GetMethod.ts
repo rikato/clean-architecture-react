@@ -2,7 +2,7 @@ import { EndpointMethod } from "./EndpointMethod";
 
 export class GetMethod<T> extends EndpointMethod {
   protected async handle(uid?: string): Promise<T> {
-    const result = await fetch(`${this.path}${uid ? `/${uid}.json` : ""}`, {
+    const result = await fetch(`${this.path}${uid ? `/${uid}` : ""}.json`, {
       method: "GET",
     });
 
