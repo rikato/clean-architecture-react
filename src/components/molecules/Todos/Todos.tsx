@@ -10,13 +10,11 @@ export const Todos: React.FC<ITodosProps> = observer(({ todos }) => {
   return (
     <>
       {todos.map((todoViewModel) => (
-        <>
-          <Todo
-            title={todoViewModel.title}
-            completed={todoViewModel.completed}
-            onCompleted={() => todoViewModel.complete()}
-          />
-        </>
+        <Todo
+          title={todoViewModel.title}
+          completed={todoViewModel.completed}
+          onCompleted={() => todoViewModel.complete()}
+        />
       ))}
     </>
   );
