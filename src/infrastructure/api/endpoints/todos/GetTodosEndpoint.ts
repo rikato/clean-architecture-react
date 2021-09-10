@@ -8,7 +8,7 @@ export class GetTodosEndpoint
   implements IGetMethodEndpoint<TodoEntity[]>
 {
   constructor() {
-    super("mocks/todos.json");
+    super("mocks/todos/todos.json");
   }
 
   public async get(): Promise<TodoEntity[]> {
