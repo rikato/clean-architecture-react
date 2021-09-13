@@ -23,3 +23,15 @@ Using MobX, Typescript and React.
     ├───repositories
     └───services
  ```
+
+## Application layer
+
+This layer is responsible for creating a representative model of the core layer. It is dependend on the infrastructure layer for getting and updating data.
+
+## Core layer
+
+This is where the magic happens. It contains all business logic and rules. It also contains the the methods for interacting with entities, trough commands and queries.
+
+## Infrastructure layer
+
+This is the layer that communicates with a backend api. It is used as an adapter and can be replaced with any other infrastructure layer.
