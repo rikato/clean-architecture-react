@@ -1,3 +1,6 @@
+import { IResult } from "../../../results/Result";
+import { SuccessfulResult } from "../../../results/successful/SuccessfulResult";
+import { DomainErrorResult } from "../../../results/unsuccessful/DomainErrorResult";
 import { Entity } from "../Entity";
 
 export type TodoEntityType = {
@@ -16,18 +19,6 @@ export class TodoEntity extends Entity implements TodoEntityType {
     this._completed = completed;
   }
 
-  public get title(): string {
-    return this._title;
-  }
-
-  public get completed(): boolean {
-    return this._completed;
-  }
-
-  public complete(): void {
-    this._completed = true;
-  }
-
   public static new(title: string, completed: boolean): TodoEntity {
     return new TodoEntity("non-existing", title, completed);
   }
@@ -38,5 +29,25 @@ export class TodoEntity extends Entity implements TodoEntityType {
     completed: boolean
   ): TodoEntity {
     return new TodoEntity(uid, title, completed);
+  }
+
+  public get title(): string {
+    return this._title;
+  }
+
+  public get completed(): boolean {
+    return this._completed;
+  }
+
+  public complete(): IResult {
+    if (this._completed) {
+      return new DomainErrorResult(
+        "Todo cannot be completed since it is already completed."
+      );
+    }
+
+    this._completed = true;
+
+    return new SuccessfulResult<TodoEntity>();
   }
 }

@@ -2,6 +2,6 @@
   "content": [
     { "uid": "1", "title": "First todo", "completed": false },
     { "uid": "2", "title": "Second todo", "completed": false },
-    { "uid": "3", "title": "Third todo", "completed": false }
+    { "uid": "3", "title": "Third todo", "completed": true }
   ]
 }

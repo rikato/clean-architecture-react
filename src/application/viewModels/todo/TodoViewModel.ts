@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { CompleteTodo } from "../../../core/commands/todo/CompleteTodo";
+import { CompleteTodoCommand } from "../../../core/commands/todo/CompleteTodoCommand";
 import { TodoEntity } from "../../../core/domain/entities/todo/TodoEntity";
+import { UnsuccessfulResult } from "../../../core/results/unsuccessful/UnsuccessfulResult";
 
 export class TodoViewModel {
   public title: string;
@@ -8,7 +9,7 @@ export class TodoViewModel {
 
   private _uid: string;
 
-  private _completeTodoCommand: CompleteTodo = new CompleteTodo();
+  private _completeTodoCommand: CompleteTodoCommand = new CompleteTodoCommand();
 
   constructor(todo: TodoEntity) {
     this.title = todo.title;
@@ -21,10 +22,10 @@ export class TodoViewModel {
 
   public async complete(): Promise<void> {
     runInAction(async () => {
-      // Todo: check if handler is succesfull.
-      await this._completeTodoCommand.handle(this._uid);
+      const result = await this._completeTodoCommand.handle(this._uid);
 
-      this.completed = true;
+      if (result.isSuccessful) this.completed = true;
+      else throw Error((result as UnsuccessfulResult).failure.message);
     });
   }
 }
