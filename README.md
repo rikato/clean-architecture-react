@@ -38,4 +38,4 @@ This is the layer that communicates with a backend api. It is used as an adapter
 
 ## Components layer
 
-This layer contains all React components and uses the application layer the get a representable model.
+This layer contains all React components and uses the application layer to create a representable model.
