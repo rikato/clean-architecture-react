@@ -1,5 +1,5 @@
 import { TodoRepository } from "../../../infrastructure/repositories/TodoRepository";
-import { IResult } from "../../results/successful/SuccessfulResult";
+import { IResult } from "../../results/IResult";
 
 export class CompleteTodoCommand {
   private _todoRepository: TodoRepository = new TodoRepository();

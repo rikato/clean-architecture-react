@@ -1,8 +1,4 @@
-export interface IResult<T> {
-  isSuccessful: boolean;
-  isNotSuccessful: boolean;
-}
-export interface IResultFailureReason {}
+import { IResult, IResultFailureReason } from "../IResult";
 
 export class UnsuccessfulResult<T> implements IResult<T> {
   private _failure: IResultFailureReason | undefined;
@@ -16,7 +12,7 @@ export class UnsuccessfulResult<T> implements IResult<T> {
     this._isNotSuccessful = true;
   }
 
-  public get failure() {
+  public get failure(): IResultFailureReason | undefined {
     return this._failure;
   }
 

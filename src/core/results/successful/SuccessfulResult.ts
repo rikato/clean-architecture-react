@@ -1,7 +1,4 @@
-export interface IResult<T> {
-  isSuccessful: boolean;
-  isNotSuccessful: boolean;
-}
+import { IResult } from "../IResult";
 
 export class SuccessfulResult<T> implements IResult<T> {
   private _content: T | undefined;
@@ -15,7 +12,7 @@ export class SuccessfulResult<T> implements IResult<T> {
     this._isNotSuccessful = false;
   }
 
-  public get content() {
+  public get content(): T | undefined {
     return this._content;
   }
 
