@@ -1,11 +1,7 @@
 import { TodoRepository } from "../../../infrastructure/repositories/TodoRepository";
 
 export class CompleteTodo {
-  private _todoRepository: TodoRepository;
-
-  constructor() {
-    this._todoRepository = new TodoRepository();
-  }
+  private _todoRepository: TodoRepository = new TodoRepository();
 
   public async handle(uid: string): Promise<void> {
     const todo = await this._todoRepository.getById(uid);

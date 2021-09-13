@@ -1,4 +1,5 @@
 import { Entity } from "../Entity";
+import { IResult } from "../../../results/successful/SuccessfulResult";
 
 export type TodoEntityType = {
   title: string;
@@ -24,8 +25,14 @@ export class TodoEntity extends Entity implements TodoEntityType {
     return this._completed;
   }
 
-  public complete(): void {
+  public complete(): IResult<void> {
+    if (this._completed) {
+      // Todo: return unsuccessful result with a reason.
+    }
+
     this._completed = true;
+
+    return {};
   }
 
   public static new(title: string, completed: boolean): TodoEntity {
