@@ -35,3 +35,7 @@ This is where the magic happens. It contains all business logic and rules. It al
 ## Infrastructure layer
 
 This is the layer that communicates with a backend api. It is used as an adapter and can be replaced with any other infrastructure layer.
+
+## Components layer
+
+This layer contains all React components and uses the application layer the get a representable model.
