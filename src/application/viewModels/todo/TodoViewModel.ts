@@ -25,7 +25,13 @@ export class TodoViewModel {
       const result = await this._completeTodoCommand.handle(this._uid);
 
       if (result.isSuccessful) this.completed = true;
-      else throw Error((result as UnsuccessfulResult).failure.message);
+      else {
+        const errorResult = result as UnsuccessfulResult;
+
+        throw Error(
+          `${errorResult.failure.failureReason}: ${errorResult.failure.message}`
+        );
+      }
     });
   }
 }
