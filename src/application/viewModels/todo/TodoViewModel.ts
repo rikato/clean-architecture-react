@@ -15,7 +15,7 @@ export class TodoViewModel {
     this.title = todo.title;
     this.completed = todo.completed;
 
-    this._uid = todo._uid;
+    this._uid = todo.uid;
 
     makeAutoObservable(this);
   }

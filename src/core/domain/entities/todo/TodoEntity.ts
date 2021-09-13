@@ -3,12 +3,7 @@ import { SuccessfulResult } from "../../../results/successful/SuccessfulResult";
 import { DomainErrorResult } from "../../../results/unsuccessful/DomainErrorResult";
 import { Entity } from "../Entity";
 
-export type TodoEntityType = {
-  title: string;
-  completed: boolean;
-};
-
-export class TodoEntity extends Entity implements TodoEntityType {
+export class TodoEntity extends Entity {
   private _title: string;
   private _completed: boolean;
 
