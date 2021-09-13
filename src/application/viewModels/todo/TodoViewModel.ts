@@ -23,8 +23,6 @@ export class TodoViewModel {
     runInAction(async () => {
       const result = await this._completeTodoCommand.handle(this._uid);
 
-      console.log(result);
-
       if (result.isSuccessful) this.completed = true;
       else throw Error("Unsuccessful result.");
     });
