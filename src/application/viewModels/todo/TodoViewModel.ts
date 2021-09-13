@@ -21,10 +21,12 @@ export class TodoViewModel {
 
   public async complete(): Promise<void> {
     runInAction(async () => {
-      // Todo: check if handler is succesfull.
-      await this._completeTodoCommand.handle(this._uid);
+      const result = await this._completeTodoCommand.handle(this._uid);
 
-      this.completed = true;
+      console.log(result);
+
+      if (result.isSuccessful) this.completed = true;
+      else throw Error("Unsuccessful result.");
     });
   }
 }
