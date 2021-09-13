@@ -1,7 +1,7 @@
 export class Entity {
   private _uid: string;
 
-  constructor(uid: string) {
+  protected constructor(uid: string) {
     this._uid = uid;
   }
 
