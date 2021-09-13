@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { CompleteTodoCommand } from "../../../core/commands/todo/CompleteTodoCommand";
 import { TodoEntity } from "../../../core/domain/entities/todo/TodoEntity";
+import { UnsuccessfulResult } from "../../../core/results/unsuccessful/UnsuccessfulResult";
 
 export class TodoViewModel {
   public title: string;
@@ -24,7 +25,7 @@ export class TodoViewModel {
       const result = await this._completeTodoCommand.handle(this._uid);
 
       if (result.isSuccessful) this.completed = true;
-      else throw Error("Unsuccessful result.");
+      else throw Error((result as UnsuccessfulResult).failure.message);
     });
   }
 }

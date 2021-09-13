@@ -1,19 +1,16 @@
-import { IResult, IResultFailureReason } from "../IResult";
+import { IResultFailure, IUnsuccessfulResult } from "../Result";
 
-export class UnsuccessfulResult<T> implements IResult<T> {
-  private _failure: IResultFailureReason | undefined;
+export class UnsuccessfulResult implements IUnsuccessfulResult {
   private _isSuccessful: boolean;
   private _isNotSuccessful: boolean;
 
-  constructor(failure?: IResultFailureReason) {
+  private _failure: IResultFailure;
+
+  constructor(failure: IResultFailure) {
     this._failure = failure;
 
     this._isSuccessful = false;
     this._isNotSuccessful = true;
-  }
-
-  public get failure(): IResultFailureReason | undefined {
-    return this._failure;
   }
 
   public get isSuccessful() {
@@ -22,5 +19,9 @@ export class UnsuccessfulResult<T> implements IResult<T> {
 
   public get isNotSuccessful() {
     return this._isNotSuccessful;
+  }
+
+  public get failure(): IResultFailure {
+    return this._failure;
   }
 }

@@ -1,6 +1,6 @@
-import { IResult } from "../IResult";
+import { ISuccessfulResult } from "../Result";
 
-export class SuccessfulResult<T> implements IResult<T> {
+export class SuccessfulResult<T> implements ISuccessfulResult<T> {
   private _content: T | undefined;
   private _isSuccessful: boolean;
   private _isNotSuccessful: boolean;

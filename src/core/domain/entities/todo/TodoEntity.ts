@@ -1,8 +1,6 @@
-import {
-  IResult,
-  SuccessfulResult,
-} from "../../../results/successful/SuccessfulResult";
-import { UnsuccessfulResult } from "../../../results/unsuccessful/UnsuccessfulResult";
+import { IResult } from "../../../results/Result";
+import { SuccessfulResult } from "../../../results/successful/SuccessfulResult";
+import { DomainErrorResult } from "../../../results/unsuccessful/DomainErrorResult";
 import { Entity } from "../Entity";
 
 export type TodoEntityType = {
@@ -41,13 +39,15 @@ export class TodoEntity extends Entity implements TodoEntityType {
     return this._completed;
   }
 
-  public complete(): IResult<void> {
+  public complete(): IResult {
     if (this._completed) {
-      return new UnsuccessfulResult();
+      return new DomainErrorResult(
+        "Todo cannot be completed since it is already completed."
+      );
     }
 
     this._completed = true;
 
-    return new SuccessfulResult();
+    return new SuccessfulResult<TodoEntity>();
   }
 }
