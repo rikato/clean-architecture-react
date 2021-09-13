@@ -42,9 +42,6 @@ export class TodoEntity extends Entity implements TodoEntityType {
   }
 
   public complete(): IResult<void> {
-    console.log("entity completed state:", this._completed);
-
-    // Todo can only be completed when it is not yet completed.
     if (this._completed) {
       return new UnsuccessfulResult();
     }
