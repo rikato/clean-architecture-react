@@ -8,7 +8,7 @@ export class GetTodoByIdEndpoint
   implements IGetByUidMethodEndpoint<TodoEntity>
 {
   constructor() {
-    super("mocks/todo");
+    super("mocks/todos");
   }
 
   public async getByUid(uid: string): Promise<TodoEntity> {
