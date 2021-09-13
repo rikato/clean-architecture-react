@@ -2,6 +2,7 @@
 
 Using MobX, Typescript and React.
 
+```
 ├───application
 │   ├───hooks
 │   └───viewModels
@@ -30,3 +31,4 @@ Using MobX, Typescript and React.
     ├───repositories
     └───services
         └───todos
+ ```
