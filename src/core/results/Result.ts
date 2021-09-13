@@ -1,7 +1,8 @@
 import { SuccessfulResult } from "./successful/SuccessfulResult";
 import { UnsuccessfulResult } from "./unsuccessful/UnsuccessfulResult";
+
 export enum ResultFailureReason {
-  DomainError,
+  DomainError = "domain-error",
 }
 
 export interface IResultFailure {
