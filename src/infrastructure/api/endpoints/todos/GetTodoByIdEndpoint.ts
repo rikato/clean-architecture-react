@@ -1,7 +1,8 @@
 import { TodoEntity } from "../../../../core/domain/entities/todo/TodoEntity";
-import { IGetByUidMethodEndpoint, ITodoDTO } from "../../common/types";
+import { ITodoDTO } from "../../common/types";
 import { TodosMapper } from "../../mappers/TodosMapper";
 import { GetMethod } from "../../methods/GetMethod";
+import { IGetByUidMethodEndpoint } from "../common/types";
 
 export class GetTodoByIdEndpoint
   extends GetMethod<ITodoDTO>
