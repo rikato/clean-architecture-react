@@ -1,9 +1,9 @@
-import { Entity } from "../Entity";
 import {
   IResult,
   SuccessfulResult,
 } from "../../../results/successful/SuccessfulResult";
 import { UnsuccessfulResult } from "../../../results/unsuccessful/UnsuccessfulResult";
+import { Entity } from "../Entity";
 
 export type TodoEntityType = {
   title: string;
@@ -19,6 +19,18 @@ export class TodoEntity extends Entity implements TodoEntityType {
 
     this._title = title;
     this._completed = completed;
+  }
+
+  public static new(title: string, completed: boolean): TodoEntity {
+    return new TodoEntity("non-existing", title, completed);
+  }
+
+  public static existing(
+    uid: string,
+    title: string,
+    completed: boolean
+  ): TodoEntity {
+    return new TodoEntity(uid, title, completed);
   }
 
   public get title(): string {
@@ -40,17 +52,5 @@ export class TodoEntity extends Entity implements TodoEntityType {
     this._completed = true;
 
     return new SuccessfulResult();
-  }
-
-  public static new(title: string, completed: boolean): TodoEntity {
-    return new TodoEntity("non-existing", title, completed);
-  }
-
-  public static existing(
-    uid: string,
-    title: string,
-    completed: boolean
-  ): TodoEntity {
-    return new TodoEntity(uid, title, completed);
   }
 }
