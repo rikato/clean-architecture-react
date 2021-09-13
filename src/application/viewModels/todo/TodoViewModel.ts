@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { CompleteTodo } from "../../../core/commands/todo/CompleteTodo";
+import { CompleteTodoCommand } from "../../../core/commands/todo/CompleteTodoCommand";
 import { TodoEntity } from "../../../core/domain/entities/todo/TodoEntity";
 
 export class TodoViewModel {
@@ -8,7 +8,7 @@ export class TodoViewModel {
 
   private _uid: string;
 
-  private _completeTodoCommand: CompleteTodo = new CompleteTodo();
+  private _completeTodoCommand: CompleteTodoCommand = new CompleteTodoCommand();
 
   constructor(todo: TodoEntity) {
     this.title = todo.title;
